@@ -1,0 +1,35 @@
+{
+  "name": "run-run",
+  "version": "1.0.0",
+  "description": "This module will allow you to run npm scripts with variables and with input",
+  "main": "index.js",
+  "bin": {
+    "run-run": "index.js"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mikko Haapoja",
+    "email": "me@mikkoh.com",
+    "url": "https://github.com/mikkoh"
+  },
+  "dependencies": {
+    "get-stdin": "^5.0.1",
+    "merge": "^1.2.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "npm,scripts,input,variables,environment"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Jam3/run-run.git"
+  },
+  "homepage": "https://github.com/Jam3/run-run",
+  "bugs": {
+    "url": "https://github.com/Jam3/run-run/issues"
+  }
+}
