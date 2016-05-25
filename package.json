@@ -18,9 +18,12 @@
     "merge": "^1.2.0",
     "minimist": "^1.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^2.5.2",
+    "tape": "^4.5.1"
+  },
   "scripts": {
-    "test": "node test.js"
+    "test": "npm test --prefix test/"
   },
   "keywords": [
     "npm,scripts,input,variables,environment"
