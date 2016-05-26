@@ -26,25 +26,32 @@ You can define environment variables in three ways with `run-run`.
 Example `package.json` using `run-run` with `VARIABLE_NAME=variableValue`:
 ```
 {
-    ... the rest of the stuff defined in package.json,
+  ... the rest of the stuff defined in package.json,
 
-    scripts: {
-        "test": "run-run SCRIPT_TO_RUN=test/index.js -- 'npm run run-script'",
-        "run-script": "node {SCRIPT_TO_RUN}"
-    }
+  scripts: {
+    "build": "run-run SCRIPT=index.js -- 'npm run cop; npm run step2;'",
+    "copy": "cp ./src/{SCRIPT} ./temp.js",
+    "step2": "npm run browserify; npm run run-it",
+    "browserify": "browserify ./temp.js > {SCRIPT}; rm ./temp.js",
+    "run-it": "node {SCRIPT}"
+  }
 }
 ```
 
-In the above example `test/index.js` will be injected into: 
+In the above example `index.js` will be injected into: 
 ```
-"run-script": "node {SCRIPT_TO_RUN}"
+"copy": "cp ./src/{SCRIPT} ./temp.js",
+"browserify": "browserify ./temp.js > {SCRIPT}; rm ./temp.js",
+"run-it": "node {SCRIPT}"
 ```
-So at runtime it becomes:
+So at runtime they become:
 ```
-"run-script": "node test/index.js"
+"copy": "cp ./src/index.js ./temp.js",
+"browserify": "browserify ./temp.js > index.js; rm ./temp.js",
+"run-it": "node index.js"
 ```
 
-`test/index.js` you will be able to also access/use `process.env.SCRIPT_TO_RUN`.
+`index.js` run in `npm run run-it` will be able to also access/use `process.env.SCRIPT`.
 
 It should be noted for Windows users you should define your variables after the `run-run` command and not before. Doing it this way will ensure your npm scripts will run cross platform.
 
@@ -53,18 +60,18 @@ It should be noted for Windows users you should define your variables after the 
 Example `package.json` using `run-run` with pipes:
 ```
 {
-    ... the rest of the stuff defined in package.json,
+  ... the rest of the stuff defined in package.json,
 
-    scripts: {
-        "test": "cat vars.json | run-run -- 'node {SCRIPT_TO_RUN}'"
-    }
+  scripts: {
+    "test": "cat vars.json | run-run -- 'node {SCRIPT}'"
+  }
 }
 ```
 
 `vars.json` would look like this:
 ```json
 {
-    "SCRIPT_TO_RUN": "test/index.js"
+  "SCRIPT": "test/index.js"
 }
 ```
 
@@ -75,11 +82,11 @@ Piping environment variables to your scripts is very powerful. For instance usin
 Example `package.json` using `run-run` with arguments:
 ```
 {
-    ... the rest of the stuff defined in package.json,
+  ... the rest of the stuff defined in package.json,
 
-    scripts: {
-        "test": "run-run --SCRIPT_TO_RUN test/index.js -- 'node {SCRIPT_TO_RUN}'"
-    }
+  scripts: {
+    "test": "run-run --SCRIPT test/index.js -- 'node {SCRIPT}'"
+  }
 }
 ```
 
