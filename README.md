@@ -8,6 +8,11 @@
 
 [![NPM](https://nodei.co/npm/run-run.png)](https://www.npmjs.com/package/run-run)
 
+### Install
+```bash
+$ npm install run-run --save-dev
+```
+
 ### Ways to define environment variables
 
 You can define environment variables in three ways with `run-run`.
@@ -83,8 +88,8 @@ Example `package.json` using `run-run` with arguments:
 
 ## Similar Projects
 
-- [http://npmjs.com/cross-env](cross-env)
-- [http://npmjs.com/cross-env](better-npm-run)
+- [cross-env](http://npmjs.com/cross-env)
+- [better-npm-run](http://npmjs.com/better-npm-run)
 
 
 ## License
