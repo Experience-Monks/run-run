@@ -59,7 +59,7 @@ Example `package.json` using `run-run` with pipes:
 `vars.json` would look like this:
 ```json
 {
-    "SCRIPT_TO_RUN": 'test/index.js'
+    "SCRIPT_TO_RUN": "test/index.js"
 }
 ```
 
