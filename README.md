@@ -38,20 +38,20 @@ Example `package.json` using `run-run` with `VARIABLE_NAME=variableValue`:
 }
 ```
 
-In the above example `index.js` will be injected into: 
+In the above example `index.js` into `{SCRIPT}` and `temp.js` will be injected into `{TMP}`. So with: 
 ```
 "cp": "cp ./src/{SCRIPT} ./{TMP}",
 "browserify": "browserify ./temp.js > {SCRIPT}; rm ./temp.js",
 "run-it": "node {SCRIPT}"
 ```
-So at runtime they become:
+At runtime they become:
 ```
 "cp": "cp ./src/index.js ./temp.js",
 "browserify": "browserify ./temp.js > index.js; rm ./temp.js",
 "run-it": "node index.js"
 ```
 
-`index.js` run in `npm run run-it` will be able to also access/use `process.env.SCRIPT`.
+When `npm run run-it` is run `index.js` will be able to access the `SCRIPT` and `TMP` variables via `process.env.SCRIPT` and `process.env.TMP`.
 
 It should be noted for Windows users you should define your variables after the `run-run` command and not before. Doing it this way will ensure your npm scripts will run cross platform.
 
