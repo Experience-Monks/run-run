@@ -4,8 +4,8 @@
   "description": "This is a test package.json to run run-run on.",
   "main": "none",
   "scripts": {
-    "test": "npm run test-start; npm run tests; npm run test-end",
-    "tests": "npm run test-no-var; npm run test-vars; npm run test-args; npm run test-pipe; npm run test-combined; npm run test-npm-shortcut; npm run test-read-env; npm run run-tests",
+    "test": "npm run test-start && npm run tests && npm run test-end",
+    "tests": "npm run test-no-var && npm run test-vars && npm run test-args && npm run test-pipe && npm run test-combined && npm run test-npm-shortcut && npm run test-read-env && npm run run-tests",
     "test-start": "node test-start.js",
     "test-end": "node test-end.js",
     "test-no-var": "node ../index.js -- \"npm run echo -- test-out/test-no-var 'hello test-no-var'\"",
