@@ -29,9 +29,9 @@ Example `package.json` using `run-run` with `VARIABLE_NAME=variableValue`:
   ... the rest of the stuff defined in package.json,
 
   scripts: {
-    "build": "run-run SCRIPT=index.js -- 'npm run cop; npm run step2;'",
-    "copy": "cp ./src/{SCRIPT} ./temp.js",
-    "step2": "npm run browserify; npm run run-it",
+    "start": "run-run SCRIPT=index.js TMP=temp.js -- 'npm run cp; npm run build'",
+    "cp": "cp ./src/{SCRIPT} ./{TMP}",
+    "build": "npm run browserify; npm run run-it",
     "browserify": "browserify ./temp.js > {SCRIPT}; rm ./temp.js",
     "run-it": "node {SCRIPT}"
   }
@@ -40,13 +40,13 @@ Example `package.json` using `run-run` with `VARIABLE_NAME=variableValue`:
 
 In the above example `index.js` will be injected into: 
 ```
-"copy": "cp ./src/{SCRIPT} ./temp.js",
+"cp": "cp ./src/{SCRIPT} ./{TMP}",
 "browserify": "browserify ./temp.js > {SCRIPT}; rm ./temp.js",
 "run-it": "node {SCRIPT}"
 ```
 So at runtime they become:
 ```
-"copy": "cp ./src/index.js ./temp.js",
+"cp": "cp ./src/index.js ./temp.js",
 "browserify": "browserify ./temp.js > index.js; rm ./temp.js",
 "run-it": "node index.js"
 ```
